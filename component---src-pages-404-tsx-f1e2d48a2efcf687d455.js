@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkcykelpumpar_i_skane=self.webpackChunkcykelpumpar_i_skane||[]).push([[218],{6040:function(e,n,t){t.r(n);var a=t(7294),l=t(1597);n.default=function(){return a.createElement("main",null,a.createElement("h1",null,"Page not found"),a.createElement("p",null,"This doesn't seem to be the page you're looking for. You can return ",a.createElement(l.Link,{to:"/"},"here"),"."),a.createElement(l.Link,{to:"/"}))}}}]);
+//# sourceMappingURL=component---src-pages-404-tsx-f1e2d48a2efcf687d455.js.map
