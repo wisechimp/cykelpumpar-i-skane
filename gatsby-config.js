@@ -42,7 +42,6 @@ module.exports = {
     {
       resolve: "gatsby-plugin-eslint",
       options: {
-        rulePaths: [gatsbyRequiredRules],
         extensions: ["js", "jsx", "ts", "tsx"],
         exclude: /(node_modules|.cache|public)/,
         stages: ["develop"],
