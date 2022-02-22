@@ -6,6 +6,7 @@ require("ts-node").register({
 });
 
 module.exports = {
+  pathPrefix: "/cykelpumpar-i-skane",
   siteMetadata: {
     title: `Skåne Cykelpumpar`,
     siteUrl: `https://www.yourdomain.tld`,
@@ -38,18 +39,6 @@ module.exports = {
         path: "./src/pages/",
       },
       __key: "pages",
-    },
-    {
-      resolve: "gatsby-plugin-eslint",
-      options: {
-        extensions: ["js", "jsx", "ts", "tsx"],
-        exclude: /(node_modules|.cache|public)/,
-        stages: ["develop"],
-        options: {
-          emitWarning: true,
-          failOnError: false,
-        },
-      },
     },
     {
       resolve: "gatsby-plugin-manifest",
