@@ -3,7 +3,7 @@ require("ts-node").register({
     module: "commonjs",
     target: "es2017",
   },
-})
+});
 
 module.exports = {
   siteMetadata: {
@@ -40,10 +40,23 @@ module.exports = {
       __key: "pages",
     },
     {
+      resolve: "gatsby-plugin-eslint",
+      options: {
+        rulePaths: [gatsbyRequiredRules],
+        extensions: ["js", "jsx", "ts", "tsx"],
+        exclude: /(node_modules|.cache|public)/,
+        stages: ["develop"],
+        options: {
+          emitWarning: true,
+          failOnError: false,
+        },
+      },
+    },
+    {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "src/images/icon.png",
       },
     },
   ],
-}
+};
