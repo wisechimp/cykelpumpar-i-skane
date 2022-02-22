@@ -2,6 +2,7 @@ module.exports = {
   // Specifies the ESLint parser for Typescript
   parser: "@typescript-eslint/parser",
   extends: [
+    "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
@@ -37,4 +38,13 @@ module.exports = {
     // allow @ts-ignore for testing purposes
     "@typescript-eslint/ban-ts-ignore": "off",
   },
+  overrides: [
+    // Override some TypeScript rules just for .js files
+    {
+      files: ["*.js"],
+      rules: {
+        "@typescript-eslint/no-var-requires": "off", //
+      },
+    },
+  ],
 };
