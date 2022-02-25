@@ -1,25 +1,58 @@
 version: 2.1
 jobs: 
-  build: 
+  build:
+    working_directory: ~/repo
+
     docker:
       - image: cimg/node:17.5.0
+
     steps:
+      # Get code from git
       - checkout
-      - run: echo "npm installing"
-      - run: npm install
-      - run: CI=true npm run build
-  hithere:
-    docker:
-      - image: cimg/node:17.5.0
-    steps:
-      - checkout
-      - run: echo "hello"
+
+      # A little message to see what's going on
+      - run: echo "yarn installing"
+
+      # Restore our node_modules cache if we've run this before (likely!)
+      - restore_cache:
+          key: yarn-dependencies-{{checksum "yarn.lock"}}
+
+      # Make sure our project's packages are up to date
+      - run: yarn install
+
+      # save the cache of the up to date modules for future runs
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: yarn-dependancies-{{checksum "yarn.lock"}}
+
+      - run:
+          name: Build Gatsby Site
+          command: CI=true yarn build
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - public
   deploy:
     docker:
       - image: cimg/node:17.5.0
-    steps: 
-      - checkout
-      - run: echo "soft deploy"
+
+      working_directory: ~/repo¨
+
+    steps:
+      - attach_workspace:
+        at: ./
+
+      - add_ssh_keys:
+          fingerprints:
+            - 7f:b5:e1:1e:a2:fb:e6:38:92:6d:fd:09:14:58:3a:d4
+
+      - run: echo "deploy attempt"
+
+      - run: yarn install gh-pages
+
+      - run: gh-pages -d public
+
 workflows:
   build_and_deploy:
     jobs:
@@ -27,7 +60,7 @@ workflows:
           filters:
             branches:
               ignore: gh-pages
-      - hithere
+
       - deploy:
           filters:
             branches:
