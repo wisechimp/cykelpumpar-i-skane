@@ -16,7 +16,7 @@ jobs:
       - run: echo "hello"
   deploy:
     - image: cimg/node:17.5.0
-    - steps: 
+    steps: 
       - checkout
       - run: echo "soft deploy"
 workflows:
