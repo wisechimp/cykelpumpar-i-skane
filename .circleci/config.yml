@@ -33,11 +33,12 @@ jobs:
           root: ./
           paths:
             - public
+
   deploy:
     docker:
       - image: cimg/node:17.5.0
 
-      working_directory: ~/repo¨
+      working_directory: ~/repo
 
     steps:
       - attach_workspace:
