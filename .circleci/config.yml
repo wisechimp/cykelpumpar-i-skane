@@ -14,8 +14,16 @@ jobs:
     steps:
       - checkout
       - run: echo "hello"
+  deploy:
+    - image: cimg/node:17.5.0
+    - steps: 
+      - checkout
+      - run: echo "soft deploy"
 workflows:
   build_test_and_lint:
     jobs:
       - build
       - hithere
+      - deploy:
+        requires:
+          -build
