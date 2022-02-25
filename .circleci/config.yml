@@ -15,7 +15,8 @@ jobs:
       - checkout
       - run: echo "hello"
   deploy:
-    - image: cimg/node:17.5.0
+    docker:
+      - image: cimg/node:17.5.0
     steps: 
       - checkout
       - run: echo "soft deploy"
@@ -26,4 +27,4 @@ workflows:
       - hithere
       - deploy:
         requires:
-          -build
+          - build
