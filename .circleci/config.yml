@@ -11,6 +11,9 @@ jobs:
   hithere:
     docker:
       - image: cimg/node:17.5.0
+    filters:
+      branches:
+        only: master
     steps:
       - checkout
       - run: echo "hello"
