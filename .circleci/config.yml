@@ -24,10 +24,13 @@ jobs:
       - checkout
       - run: echo "soft deploy"
 workflows:
-  build_test_and_lint:
+  build_and_deploy:
     jobs:
       - build
       - hithere
       - deploy:
+          filters:
+            branches:
+              only: master
           requires:
             - build
