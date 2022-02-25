@@ -26,5 +26,5 @@ workflows:
       - build
       - hithere
       - deploy:
-        requires:
-          - build
+          requires:
+            - build
