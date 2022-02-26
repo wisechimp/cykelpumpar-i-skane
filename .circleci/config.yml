@@ -15,7 +15,10 @@ jobs:
 
       # Restore our node_modules cache if we've run this before (likely!)
       - restore_cache:
-          keys: yarn-dependencies-{{checksum "yarn.lock"}}
+          keys:
+            - yarn-dependencies-{{checksum "yarn.lock"}}
+            # If the above can't be found then a general cache should be here hopefully!
+            - yarn-dependencies-
 
       # Make sure our project's packages are up to date
       - run: yarn install
@@ -24,10 +27,8 @@ jobs:
       - save_cache:
           paths:
             - ./node_modules
-          keys: 
-            - yarn-dependancies-{{checksum "yarn.lock"}}
-            # If the above can't be found then a general cache should be here hopefully!
-            - yarn-dependancies-
+          key: 
+            - yarn-dependencies-{{checksum "yarn.lock"}}
 
       - run:
           name: Build Gatsby Site
