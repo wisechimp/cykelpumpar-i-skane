@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkcykelpumpar_i_skane=self.webpackChunkcykelpumpar_i_skane||[]).push([[914],{836:function(e,n,t){t.r(n);var u=t(7294);n.default=function(){return u.createElement("div",null,u.createElement("p",null,"This is a testing time..."))}}}]);
+//# sourceMappingURL=component---src-pages-testing-tsx-9c1c50ae52b7163fbeb3.js.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-testing-tsx-9c1c50ae52b7163fbeb3.js","mappings":"mJAQA,UANgB,kBACd,2BACE","sources":["webpack://cykelpumpar-i-skane/./src/pages/testing.tsx"],"sourcesContent":["import React from 'react'\n\nconst Testing = () => (\n  <div>\n    <p>This is a testing time...</p>\n  </div>\n)\n\nexport default Testing"],"names":[],"sourceRoot":""}
