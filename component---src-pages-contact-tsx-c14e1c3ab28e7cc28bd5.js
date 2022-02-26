@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkcykelpumpar_i_skane=self.webpackChunkcykelpumpar_i_skane||[]).push([[650],{7780:function(e,n,t){var a=t(7294);n.Z=function(e){var n=e.pageTitle,t=e.children;return a.createElement("div",null,a.createElement("h1",null,n),t)}},2519:function(e,n,t){t.r(n);var a=t(7294),l=t(7780);n.default=function(){return a.createElement(l.Z,{pageTitle:"Contact"},a.createElement("p",null,"Drop us a line yeah!"))}}}]);
+//# sourceMappingURL=component---src-pages-contact-tsx-c14e1c3ab28e7cc28bd5.js.map
