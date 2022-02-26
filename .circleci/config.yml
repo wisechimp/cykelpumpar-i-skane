@@ -56,7 +56,7 @@ jobs:
       - run: 
           name: Install gh-pages and configure
           # Add gh-pages and then add configuration before attempting deployment
-          command:
+          command: |
             - yarn global add gh-pages
             - git config user.email "$GIT_USER_EMAIL"
             - git config user.name "$GIT_USER_NAME"
