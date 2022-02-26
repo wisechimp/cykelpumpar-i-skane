@@ -53,7 +53,7 @@ jobs:
 
       - run: echo "deploy attempt"
 
-      - run: yarn add gh-pages
+      - run: yarn global add gh-pages
 
       - run: gh-pages -d public
 
