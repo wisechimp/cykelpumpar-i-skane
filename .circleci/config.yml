@@ -46,11 +46,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ./
-
-      - add_ssh_keys:
-          fingerprints:
-            - 7f:b5:e1:1e:a2:fb:e6:38:92:6d:fd:09:14:58:3a:d4
-
+          
       - run: echo "deploy attempt"
 
       - run: 
@@ -60,7 +56,12 @@ jobs:
             yarn global add gh-pages
             git config user.email "$GIT_USER_EMAIL"
             git config user.name "$GIT_USER_NAME"
-            gh-pages -d public
+
+      - add_ssh_keys:
+          fingerprints:
+            - 7f:b5:e1:1e:a2:fb:e6:38:92:6d:fd:09:14:58:3a:d4
+      
+      - run: gh-pages -d public
 
 workflows:
   build_and_deploy:
