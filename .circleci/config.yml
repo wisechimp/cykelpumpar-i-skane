@@ -64,15 +64,30 @@ jobs:
           fingerprints:
             - 7f:b5:e1:1e:a2:fb:e6:38:92:6d:fd:09:14:58:3a:d4
       
-      - run: gh-pages -d public -m 'auto commit [ci skip]'
+      - run: gh-pages -d public -m 'CI deployment'
+
+  siteupdated:
+    deploy: 
+      docker:
+        - image: cimg/node:17.5.0
+      steps:
+        - run: echo "Site updated and gh-pages pushed"
+
 
 workflows:
   build_and_deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore: gh-pages
       - deploy:
           filters:
             branches:
               only: master
           requires:
             - build
+      - siteupdated:
+          filters:
+            branches:
+              only: gh-pages
