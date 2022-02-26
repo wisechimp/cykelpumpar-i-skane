@@ -1,0 +1,93 @@
+version: 2.1
+jobs: 
+  build:
+    working_directory: ~/repo
+
+    docker:
+      - image: cimg/node:17.5.0
+
+    steps:
+      # Get code from git
+      - checkout
+
+      # A little message to see what's going on
+      - run: echo "yarn installing"
+
+      # Restore our node_modules cache if we've run this before (likely!)
+      - restore_cache:
+          keys:
+            - yarn-dependencies-{{checksum "yarn.lock"}}
+            # If the above can't be found then a general cache should be here hopefully!
+            - yarn-dependencies-
+
+      # Make sure our project's packages are up to date
+      - run: yarn install
+
+      # save the cache of the up to date modules for future runs
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: yarn-dependencies-{{checksum "yarn.lock"}}
+
+      - run:
+          name: Build Gatsby Site
+          command: CI=true yarn build
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - public
+
+  deploy:
+    docker:
+      - image: cimg/node:17.5.0
+
+    working_directory: ~/repo
+
+    steps:
+
+      - checkout
+
+      - attach_workspace:
+          at: ./
+          
+      - run: echo "deploy attempt"
+
+      - run: 
+          name: Install gh-pages and configure
+          # Add gh-pages and then add configuration before attempting deployment
+          command: |
+            yarn global add gh-pages
+            git config user.email "$GIT_USER_EMAIL"
+            git config user.name "$GIT_USER_NAME"
+
+      - add_ssh_keys:
+          fingerprints:
+            - 7f:b5:e1:1e:a2:fb:e6:38:92:6d:fd:09:14:58:3a:d4
+      
+      - run: gh-pages -d public -m 'CI deployment'
+
+  siteupdated:
+    deploy: 
+      docker:
+        - image: cimg/node:17.5.0
+      steps:
+        - run: echo "Site updated and gh-pages pushed"
+
+
+workflows:
+  build_and_deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore: gh-pages
+      - deploy:
+          filters:
+            branches:
+              only: master
+          requires:
+            - build
+      - siteupdated:
+          filters:
+            branches:
+              only: gh-pages
