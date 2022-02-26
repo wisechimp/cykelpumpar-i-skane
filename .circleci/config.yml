@@ -64,15 +64,12 @@ jobs:
           fingerprints:
             - 7f:b5:e1:1e:a2:fb:e6:38:92:6d:fd:09:14:58:3a:d4
       
-      - run: gh-pages -d ./public
+      - run: gh-pages -m 'auto commit [ci skip]' -d public
 
 workflows:
   build_and_deploy:
     jobs:
       - build:
-          filters:
-            branches:
-              ignore: gh-pages
 
       - deploy:
           filters:
