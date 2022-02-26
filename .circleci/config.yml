@@ -67,11 +67,10 @@ jobs:
       - run: gh-pages -d public -m 'CI deployment'
 
   siteupdated:
-    deploy: 
-      docker:
-        - image: cimg/node:17.5.0
-      steps:
-        - run: echo "Site updated and gh-pages pushed"
+    docker:
+      - image: cimg/node:17.5.0
+    steps:
+      - run: echo "Site updated and gh-pages pushed"
 
 
 workflows:
