@@ -53,9 +53,14 @@ jobs:
 
       - run: echo "deploy attempt"
 
-      - run: yarn global add gh-pages
-
-      - run: gh-pages -d public
+      - run: 
+          name: Install gh-pages and configure
+          # Add gh-pages and then add configuration before attempting deployment
+          command:
+            - yarn global add gh-pages
+            - git config user.email "$GIT_USER_EMAIL"
+            - git config user.name "$GIT_USER_NAME"
+            - gh-pages -d public
 
 workflows:
   build_and_deploy:
