@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkcykelpumpar_i_skane=self.webpackChunkcykelpumpar_i_skane||[]).push([[914],{836:function(e,t,n){n.r(t);var i=n(7294);t.default=function(){return i.createElement("div",null,i.createElement("p",null,"This is testing time. Adding a file resulted in a new build as anticipated (hoped!)."),i.createElement("p",null,"Let's edit this page and try adding a commit message to the circleCI asking it to nicely skip running tests on the gh-pages branch."))}}}]);
+//# sourceMappingURL=component---src-pages-testing-tsx-b7a98f96281254c0b382.js.map
