@@ -1,0 +1,13 @@
+.banner {
+    background-color: cornflowerblue;
+    height: var(--banner-ad-height);
+    line-height: var(--banner-ad-height);
+    margin: auto;
+    max-width: 360px;
+    text-align: center;
+}
+
+.banner a {
+    color: black;
+    margin: auto;
+}
