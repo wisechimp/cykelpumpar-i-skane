@@ -16,6 +16,6 @@
     "noUnusedLocals": false
   },
   "include": [
-    "./src/**/*"
-  ]
+    "./src/**/*",
+    "src/types/css-modules.d.ts"  ]
 }
