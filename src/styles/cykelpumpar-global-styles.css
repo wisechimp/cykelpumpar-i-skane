@@ -1,1 +1,6 @@
-@import './cykelpumpar-global-variables.css'
+@import './cykelpumpar-global-variables.css';
+
+body {
+  font-family: var(--default-font);
+  margin: 0;
+}
