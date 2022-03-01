@@ -14,7 +14,9 @@ const Layout = ({pageTitle, children, advertVisibility}: LayoutProps) => (
     <Menu />
     <h1>{pageTitle}</h1>
     {children}
-    {advertVisibility && <Advert />}
+    {advertVisibility && 
+      <div className="banner-ad"><Advert /></div>
+    }
   </div>
 )
 

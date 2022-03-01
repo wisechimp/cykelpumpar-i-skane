@@ -4,3 +4,21 @@ body {
   font-family: var(--default-font);
   margin: 0;
 }
+
+.banner-ad {
+	background-color: black;
+	bottom: 0px;
+	display: block;
+	height: var(--banner-ad-height);
+	position: fixed;
+	width: 100%;
+	z-index: 5;
+}
+
+.mapboxgl-map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: calc(100vh - var(--banner-ad-height));
+  width: 100%
+}

@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import Layout from 'components/Layout/Layout'
-import Map from 'components/Map/Map'
+import Map from 'components/CyclePumpMap/CyclePumpMap'
 
 const HomePage = () => {
   return (
