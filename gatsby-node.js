@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 
-exports.onCreateWebpackConfig = ({ actions, stage }, options) => {
+exports.onCreateWebpackConfig = ({ actions }, options) => {
   const srcPath = options.srcPath || path.resolve(__dirname, "./src");
   try {
     const stat = fs.statSync(srcPath);
@@ -16,17 +16,4 @@ exports.onCreateWebpackConfig = ({ actions, stage }, options) => {
       modules: [srcPath, "node_modules"],
     },
   });
-
-  if (stage === "build-html") {
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /mapbox-gl/,
-            use: ["null loader"],
-          },
-        ],
-      },
-    });
-  }
 };
