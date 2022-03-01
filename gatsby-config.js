@@ -9,6 +9,7 @@ module.exports = {
   pathPrefix: "/cykelpumpar-i-skane",
   siteMetadata: {
     title: `Skåne Cykelpumpar`,
+    description: `A map of all the cycle pumps in Skane.`,
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
@@ -22,8 +23,25 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-mdx",
-    "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `blurred`,
+          quality: 80,
+        },
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "cyclepumps",
+        path: "./src/cyclepumps/",
+      },
+      __key: "cyclepumps",
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
