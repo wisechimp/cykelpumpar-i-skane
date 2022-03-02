@@ -31,7 +31,7 @@ jobs:
 
       - run:
           name: Build Gatsby Site
-          command: CI=true gatsby build --prefix-paths
+          command: CI=true yarn build --prefix-paths
       - persist_to_workspace:
           root: ./
           paths:
