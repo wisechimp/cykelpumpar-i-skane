@@ -16,17 +16,4 @@ exports.onCreateWebpackConfig = ({ actions, stage, loaders }, options) => {
       modules: [srcPath, "node_modules"],
     },
   });
-
-  if (stage === "build-html") {
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /@mapbox|mapbox-gl/,
-            use: loaders.null(),
-          },
-        ],
-      },
-    });
-  }
 };

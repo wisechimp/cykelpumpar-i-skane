@@ -10,7 +10,7 @@ module.exports = {
   siteMetadata: {
     title: `Skåne Cykelpumpar`,
     description: `A map of all the cycle pumps in Skane.`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://wisechimp.github.io/cykelpumpar-i-skane/`,
   },
   plugins: [
     {
