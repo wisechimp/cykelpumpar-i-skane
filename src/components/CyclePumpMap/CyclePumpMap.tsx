@@ -17,7 +17,7 @@ const CyclePumpMap = () => {
     if (!mapNode.current) return
 
     map = new Map({
-      accessToken: process.env.GATSBY_MAPBOX_ACCESS_TOKEN,
+      accessToken: process.env.MAPBOX_ACCESS_TOKEN,
       attributionControl: false,
       container: mapNode.current,
       style: "mapbox://styles/wisechimp/ck7bzyusk00uq1iqu32awttdx",
