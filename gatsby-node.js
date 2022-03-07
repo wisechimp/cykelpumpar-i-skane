@@ -17,3 +17,37 @@ exports.onCreateWebpackConfig = ({ actions, stage, loaders }, options) => {
     },
   });
 };
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
+
+  const queryData = await graphql(`
+    {
+      cyclePumpsData: allMdx {
+        edges {
+          node {
+            frontmatter {
+              slug
+            }
+            id
+          }
+        }
+      }
+    }
+  `);
+
+  if (queryData.error) {
+    throw queryData.error;
+  }
+
+  const cyclePumps = queryData.data.cyclePumpsData.edges;
+  cyclePumps.forEach(({ node }, index) => {
+    createPage({
+      path: node.frontmatter.slug,
+      component: path.resolve(`./src/templates/cyclepump.tsx`),
+      context: {
+        id: node.id,
+      },
+    });
+  });
+};

@@ -1,0 +1,7 @@
+.pumpStatusActive {
+  background-color: #00ff00;
+}
+
+.pumpStatusInactive {
+  background-color: #ff0000;
+}
