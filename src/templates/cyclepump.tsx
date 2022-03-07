@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import Layout from 'components/Layout/Layout'
+import LinkButton from 'components/LinkButton/LinkButton'
 import * as styles from './cyclepump.module.css'
 
 interface CyclePumpPageData {
@@ -26,12 +27,13 @@ const CyclePump = ({ data }: CyclePumpPageData) => {
       <div>
           <MDXRenderer>{body}</MDXRenderer>
       </div>
-      <div>
-        {status ? 
-          (<p className={styles.pumpStatusActive}>Status: Active</p>)
-          : (<p className={styles.pumpStatusInactive}>Status: Inactive</p>)
-        }
-      </div>
+      {status ? 
+        (<div className={styles.pumpActiveButtons}>
+          <p className={styles.pumpStatusActive}>Status: Active</p>
+          <LinkButton target="/contact" text="Report Issue"></LinkButton>
+        </div>)
+        : (<p className={styles.pumpStatusInactive}>Status: Inactive</p>)
+      }
     </Layout>
   )
 }
