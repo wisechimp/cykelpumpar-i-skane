@@ -1,0 +1,26 @@
+.pumpActiveButtons {
+  display: flex;
+  height: 2em;
+  justify-content: space-around;
+}
+
+.pumpStatus {
+  padding: 0.5em;
+}
+
+.pumpStatusActive {
+  background-color: #00ff00;
+  margin-block: 0;
+  padding: 0.5em;
+}
+
+.pumpInactiveNote {
+  margin: auto;
+  width: 0;
+}
+
+.pumpStatusInactive {
+  background-color: #ff0000;
+  margin: auto;
+  width: fit-content;
+}

@@ -1,0 +1,12 @@
+.button {
+  background-color: var(--primary-dark);
+  border-radius: 0.5em;
+  float: right;
+  padding: 0.5em;
+  text-align: center;
+}
+
+.button a {
+  color: var(--primary-light);
+  text-decoration: none;
+}

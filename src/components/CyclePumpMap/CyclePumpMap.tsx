@@ -1,18 +1,18 @@
-import React, { useEffect, useRef, MouseEvent } from 'react'
+import React, { useEffect, useRef } from 'react'
 // @ts-ignore
-import { Map, EventData, GeolocateControl, Marker, Popup } from '!mapbox-gl'
+import { Map, AttributionControl, EventData, GeolocateControl, Marker, Popup } from '!mapbox-gl'
 
 import mapboxSettings from '../../settings/mapbox-settings'
 import MapPopup from 'components/MapPopup/MapPopup'
 import ReactDOM from 'react-dom'
-import { stringify } from 'querystring'
 
 const CyclePumpMap = () => {
   interface CyclePumpData {
     id: number,
     properties: {
       name: string,
-      address: string
+      address: string,
+      reference?: string
     }
   }
 
@@ -27,16 +27,21 @@ const CyclePumpMap = () => {
   const cyclePumpPopupRef = useRef(new Popup({ offset: [0, -15] }))
 
   useEffect(() => {
-    console.log(accessToken)
     if (!mapNode.current) return
 
     const map = new Map({
       accessToken,
+      attributionControl: false,
       container: mapNode.current,
       style: "mapbox://styles/wisechimp/ck7bzyusk00uq1iqu32awttdx",
       center: [mapboxSettings.lng, mapboxSettings.lat],
       zoom: mapboxSettings.zoom
     })
+      .addControl(
+        new AttributionControl({
+          compact: true
+        })
+      )
       .addControl(
         new GeolocateControl({
           positionOptions: {
@@ -48,6 +53,8 @@ const CyclePumpMap = () => {
         })
       )
 
+    const cyclePumpMarker = new Marker()
+
     map.on('mouseenter', 'cykelpumpar-lund', () => {
       map.getCanvas().style.cursor = 'pointer'
     })
@@ -58,17 +65,20 @@ const CyclePumpMap = () => {
 
     map.on("click", (clickData: EventData)  => {
       console.log("Power click!")
+
       const { point, lngLat } = clickData
+      const mapPopup = null
+      const mapPopupData = fetchPopupData(map, mapPopup, point)
 
-      const mapMarker = null
-
-      const mapMarkerData = fetchMarkerData(map, mapMarker, point)
-
-      if (mapMarkerData) {
-        console.log("Clicked Pump's id: " + mapMarkerData[0].id)
-        renderPopup(mapMarkerData[0], lngLat).addTo(map)
+      if (mapPopupData) {
+        console.log("Clicked Pump's id: " + mapPopupData[0].id)
+        renderPopup(mapPopupData[0], lngLat).addTo(map)
+        renderMarker(cyclePumpMarker, lngLat).addTo(map)
       } else {
         console.log("There's no pump there my friend")
+        if (cyclePumpMarker) {
+          return cyclePumpMarker.remove()
+        }
       }
     })
 
@@ -77,9 +87,9 @@ const CyclePumpMap = () => {
     }
   }, [])
 
-  const fetchMarkerData = (map: Map, mapMarker: Marker, point: EventData.point) => {
-    if (mapMarker !== null) {
-      mapMarker.remove()
+  const fetchPopupData = (map: Map, mapPopup: Popup, point: EventData.point) => {
+    if (mapPopup !== null) {
+      mapPopup.remove()
     }
 
     const mapFeatures = map.queryRenderedFeatures(point, {
@@ -92,12 +102,17 @@ const CyclePumpMap = () => {
     return mapFeatures
   }
 
-  const renderPopup= (data: CyclePumpData, lngLat: EventCoordinates) => {
+  const renderMarker = (marker: Marker, latLng: EventData) => {
+    return marker.setLngLat(latLng)
+  }
+
+  const renderPopup = (data: CyclePumpData, lngLat: EventCoordinates) => {
+    console.log(data)
     const { properties } = data
-    const { name, address} = properties
+    const { name, address, reference} = properties
     const popupNode = document.createElement("div")
     ReactDOM.render(
-      <MapPopup />,
+      <MapPopup name={name} address={address} reference={reference} />,
       popupNode
     )
     return cyclePumpPopupRef.current
@@ -114,3 +129,4 @@ const CyclePumpMap = () => {
 }
 
 export default CyclePumpMap
+

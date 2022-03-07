@@ -1,10 +1,18 @@
 import React from 'react'
 
-import * as styles from './mappopup.module.css'
+import LinkButton from 'components/LinkButton/LinkButton'
 
-const MapPopup = () => (
-  <div className={styles.mapPopup}>
-    <p>What's popped up here?</p>
+interface MapPopupProps {
+  name: string,
+  address: string,
+  reference?: string
+}
+
+const MapPopup = ({ name, address, reference }: MapPopupProps) => (
+  <div>
+    <h3>{name}</h3>
+    <p>{address}</p>
+    <LinkButton target={`/cyclepumps/${reference}`} text='See Pump' />
   </div>
 )
 
