@@ -22,3 +22,87 @@ body {
   height: calc(100vh - var(--banner-ad-height));
   width: 100%
 }
+
+.mapboxgl-marker {
+	display: none;
+}
+
+.mapboxgl-popup-content {
+	background-color: var(--primary-contrast);
+	display: flex;
+	flex-direction: column;
+}
+
+.mapboxgl-popup-close-button {
+	font-size: 2em;
+	font-weight: 600;
+}
+
+.mapboxgl-popup-anchor-bottom {
+	margin-top: 6px;
+}
+
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+	border-top-color: var(--primary-contrast);
+}
+
+.mapboxgl-popup-anchor-left {
+	margin-top: 16px;
+	margin-left: 10px;
+}
+
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+	border-right-color: var(--primary-contrast);
+}
+
+.mapboxgl-popup-anchor-right {
+	margin-left: -10px;
+	margin-top: 16px;
+}
+
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+	border-left-color: var(--primary-contrast);
+}
+
+.mapboxgl-popup-anchor-top {
+	margin-top: 24px;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+	border-bottom-color: var(--primary-contrast);
+}
+
+/*Altering the popup's nature on a mobile device */
+@media screen and (max-width: 576px) {
+	h1 {
+		display: none;
+	}
+
+	.mapboxgl-marker {
+		display: block;
+	}
+
+	/* Yeah not ecstatic at using important but mapbox have 
+  inline styles I want to overwrite...
+  */
+	.mapboxgl-popup {
+		bottom: var(--banner-ad-height);
+		display: block;
+		max-width: 100% !important;
+		position: fixed;
+		top: unset;
+		transform: unset !important;
+		width: 100%;
+		z-index: 5;
+	}
+
+	.mapboxgl-popup-anchor-left,
+	.mapboxgl-popup-anchor-right {
+		margin-left: unset;
+		margin-top: unset;
+	}
+
+	.mapboxgl-popup-tip {
+		display: none;
+	}
+}
