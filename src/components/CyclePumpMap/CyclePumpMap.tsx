@@ -24,7 +24,6 @@ const CyclePumpMap = () => {
   const accessToken = process.env.MAPBOX_ACCESS_TOKEN
 
   const mapNode = useRef(null)
-  const cyclePumpMarkerRef = useRef(new Marker())
   const cyclePumpPopupRef = useRef(new Popup({ offset: [0, -15] }))
 
   useEffect(() => {
@@ -54,6 +53,8 @@ const CyclePumpMap = () => {
         })
       )
 
+    const cyclePumpMarker = new Marker()
+
     map.on('mouseenter', 'cykelpumpar-lund', () => {
       map.getCanvas().style.cursor = 'pointer'
     })
@@ -72,10 +73,12 @@ const CyclePumpMap = () => {
       if (mapPopupData) {
         console.log("Clicked Pump's id: " + mapPopupData[0].id)
         renderPopup(mapPopupData[0], lngLat).addTo(map)
-        renderMarker(lngLat).addTo(map)
+        renderMarker(cyclePumpMarker, lngLat).addTo(map)
       } else {
         console.log("There's no pump there my friend")
-        cyclePumpMarkerRef.current.remove()
+        if (cyclePumpMarker) {
+          return cyclePumpMarker.remove()
+        }
       }
     })
 
@@ -99,8 +102,8 @@ const CyclePumpMap = () => {
     return mapFeatures
   }
 
-  const renderMarker = (latLng: EventData) => {
-    return cyclePumpMarkerRef.current.setLngLat(latLng)
+  const renderMarker = (marker: Marker, latLng: EventData) => {
+    return marker.setLngLat(latLng)
   }
 
   const renderPopup = (data: CyclePumpData, lngLat: EventCoordinates) => {
