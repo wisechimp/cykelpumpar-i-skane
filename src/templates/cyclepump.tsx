@@ -1,17 +1,22 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { IGatsbyImageData, getImage, StaticImage } from 'gatsby-plugin-image'
 
 import Layout from 'components/Layout/Layout'
 import LinkButton from 'components/LinkButton/LinkButton'
 import * as styles from './cyclepump.module.css'
+// import SwipeableImageView from 'components/SwipeableImageView/SwipeableImageView'
 
 interface CyclePumpPageData {
   data: {
     mdx: {
       frontmatter: {
         name: string,
-        status: boolean
+        status: boolean,
+        images: Array<IGatsbyImageData>,
+        lat: number,
+        lng: number
       },
       body: string
     }
@@ -19,11 +24,19 @@ interface CyclePumpPageData {
 }
 
 const CyclePump = ({ data }: CyclePumpPageData) => {
+  const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
   const { frontmatter, body } = data.mdx
-  const { name, status } = frontmatter
+  const { name, status, images, lat, lng } = frontmatter
+  const staticMapApi = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/${lng},${lat},9.67,0.00,0.00/1000x600@2x?access_token=${mapboxToken}`
+  console.log(images)
+  const image0 = getImage(images[0])
+  const image1 = getImage(images[1])
+  const image2 = getImage(images[2])
 
   return (
-    <Layout pageTitle={name} advertVisibility>
+    <Layout pageTitle={name} bannerVisibility>
+      {/* <SwipeableImageView images={[image0, image1, image2]} /> */}
+      <StaticImage src={staticMapApi} alt={`A map of the ${name} cycle pump`} />
       <div>
           <MDXRenderer>{body}</MDXRenderer>
       </div>
@@ -47,6 +60,15 @@ export const query = graphql`
       frontmatter {
         name
         status
+        lat
+        lng
+        images {
+          childImageSharp {
+            gatsbyImageData (
+              placeholder: BLURRED
+            )
+          }
+        }
       }
     }
   }
