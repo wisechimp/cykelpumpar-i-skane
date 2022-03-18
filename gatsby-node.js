@@ -2,8 +2,7 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN;
-const publicMapboxToken =
-  "pk.eyJ1Ijoid2lzZWNoaW1wIiwiYSI6ImNqcnRia21rOTBqaWQ0M25wM2d6N3o0NnMifQ.FTiAf09nKL12rrVaAFsZZQ";
+const publicMapboxToken = process.env.PUBLIC_MAPBOX_ACCESS_TOKEN;
 const path = require("path");
 const fs = require("fs");
 const axios = require("axios");
