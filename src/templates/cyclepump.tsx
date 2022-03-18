@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { IGatsbyImageData, getImage, StaticImage } from 'gatsby-plugin-image'
+import { IGatsbyImageData, GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 import Layout from 'components/Layout/Layout'
 import LinkButton from 'components/LinkButton/LinkButton'
@@ -19,15 +19,19 @@ interface CyclePumpPageData {
         lng: number
       },
       body: string
+    },
+    cyclePump : {
+      id: string,
+      geometry: Array<number>,
+      localFile: IGatsbyImageData
     }
   }
 }
 
 const CyclePump = ({ data }: CyclePumpPageData) => {
-  const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
   const { frontmatter, body } = data.mdx
-  const { name, status, images, lat, lng } = frontmatter
-  const staticMapApi = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/${lng},${lat},9.67,0.00,0.00/1000x600@2x?access_token=${mapboxToken}`
+  const { name, status, images } = frontmatter
+  const pumpImage = getImage(data.cyclePump.localFile)
   console.log(images)
   const image0 = getImage(images[0])
   const image1 = getImage(images[1])
@@ -35,9 +39,11 @@ const CyclePump = ({ data }: CyclePumpPageData) => {
 
   return (
     <Layout pageTitle={name} bannerVisibility>
+      {pumpImage 
+        ? <GatsbyImage image={pumpImage} alt="A map of a cycle pump perhaps?" />
+        : <p>There's been a processing problem here!</p>}
       {/* <SwipeableImageView images={[image0, image1, image2]} /> */}
-      <StaticImage src={staticMapApi} alt={`A map of the ${name} cycle pump`} />
-      <div>
+     <div>
           <MDXRenderer>{body}</MDXRenderer>
       </div>
       {status ? 
@@ -71,5 +77,19 @@ export const query = graphql`
         }
       }
     }
+    cyclePump(id: {eq: "0c45395c-95e0-5090-93d4-5c50d6f65a5b"}) {
+    id
+    geometry {
+      coordinates
+    }
+    localFile {
+      childImageSharp {
+        gatsbyImageData(
+          width: 400
+          height: 320
+        )
+      }
+    }
+  }
   }
 `
