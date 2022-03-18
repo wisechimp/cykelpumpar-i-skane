@@ -5,11 +5,11 @@ body {
   margin: 0;
 }
 
-.banner-ad {
+.display-banner {
 	background-color: black;
 	bottom: 0px;
 	display: block;
-	height: var(--banner-ad-height);
+	height: var(--display-banner-height);
 	position: fixed;
 	width: 100%;
 	z-index: 5;
@@ -19,7 +19,7 @@ body {
   position: absolute;
   top: 0;
   bottom: 0;
-  height: calc(100vh - var(--banner-ad-height));
+  height: calc(100vh - var(--display-banner-height));
   width: 100%
 }
 
@@ -86,7 +86,7 @@ body {
   inline styles I want to overwrite...
   */
 	.mapboxgl-popup {
-		bottom: var(--banner-ad-height);
+		bottom: var(--display-banner-height);
 		display: block;
 		max-width: 100% !important;
 		position: fixed;

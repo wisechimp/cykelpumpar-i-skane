@@ -1,0 +1,21 @@
+.swipingContainer {
+  background-color: blueviolet;
+  overflow: hidden;
+  width: 350px;
+}
+
+.swipingView {
+  padding: 0.5em;
+  transform: "translateX(-0%)";
+  transition: transform 0.3s;
+  white-space: nowrap;
+}
+
+.swipeableItem {
+  align-items: center;
+  background-color: aquamarine;
+  display: inline-flex;
+  height: 320px;
+  justify-content: center;
+  width: 100%;
+}

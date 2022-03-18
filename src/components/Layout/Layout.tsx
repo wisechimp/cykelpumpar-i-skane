@@ -1,21 +1,21 @@
 import React, { ReactNode } from 'react'
 
-import Advert from 'components/Advert/Advert'
+import DisplayBanner from 'components/DisplayBanner/DisplayBanner'
 import Menu from 'components/Menu/Menu'
 
 interface LayoutProps {
   pageTitle: string
   children: ReactNode
-  advertVisibility: boolean
+  bannerVisibility: boolean
 }
 
-const Layout = ({pageTitle, children, advertVisibility}: LayoutProps) => (
+const Layout = ({pageTitle, children, bannerVisibility}: LayoutProps) => (
   <div>
     <Menu />
     <h1>{pageTitle}</h1>
     {children}
-    {advertVisibility && 
-      <div className="banner-ad"><Advert /></div>
+    {bannerVisibility && 
+      <div className='display-banner'><DisplayBanner /></div>
     }
   </div>
 )
