@@ -5,8 +5,7 @@ import CyclePumpMap from 'components/CyclePumpMap/CyclePumpMap'
 
 const HomePage = () => {
   return (
-    <Layout pageTitle="Home sweet home!" bannerVisibility>
-      <p>We'll probably have a map here. Goodness knows how I'll TS that in!</p>
+    <Layout pageTitle="" bannerVisibility>
       <CyclePumpMap />
     </Layout>
   )}

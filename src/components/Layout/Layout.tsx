@@ -11,7 +11,7 @@ interface LayoutProps {
 
 const Layout = ({pageTitle, children, bannerVisibility}: LayoutProps) => (
   <div>
-    <Menu />
+    <Menu pageTitle={pageTitle} />
     <h1>{pageTitle}</h1>
     {children}
     {bannerVisibility && 

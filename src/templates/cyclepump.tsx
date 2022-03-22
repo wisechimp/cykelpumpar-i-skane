@@ -40,7 +40,7 @@ const CyclePump = ({ data }: CyclePumpPageData) => {
   return (
     <Layout pageTitle={name} bannerVisibility>
       {pumpImage 
-        ? <GatsbyImage image={pumpImage} alt="A map of a cycle pump perhaps?" />
+        ? <GatsbyImage className={styles.pumpImage} image={pumpImage} alt="A map of a cycle pump perhaps?" />
         : <p>There's been a processing problem here!</p>}
       {/* <SwipeableImageView images={[image0, image1, image2]} /> */}
      <div>
