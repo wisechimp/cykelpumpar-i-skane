@@ -96,7 +96,7 @@ exports.onCreateNode = async ({
 }) => {
   if (node.internal.type === PUMP_NODE_TYPE) {
     const fileNode = await createRemoteFileNode({
-      url: `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s+8d343a(${node.geometry.coordinates[0]},${node.geometry.coordinates[1]})/${node.geometry.coordinates[0]},${node.geometry.coordinates[1]},13/400x320?access_token=${publicMapboxToken}`,
+      url: `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s+8d343a(${node.geometry.coordinates[0]},${node.geometry.coordinates[1]})/${node.geometry.coordinates[0]},${node.geometry.coordinates[1]},13/400x320@2x?access_token=${publicMapboxToken}`,
       parentNodeId: node.id,
       createNode,
       createNodeId,

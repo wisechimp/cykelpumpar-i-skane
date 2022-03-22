@@ -4,6 +4,12 @@
   justify-content: space-around;
 }
 
+.pumpImage{
+  display: block;
+  margin: auto;
+  width: fit-content;
+}
+
 .pumpStatus {
   padding: 0.5em;
 }

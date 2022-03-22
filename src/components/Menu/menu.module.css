@@ -1,0 +1,24 @@
+.actionBar {
+  display: none;
+}
+
+@media screen and (max-width: 576px) {
+  .actionBar {
+    align-items: center;
+    background: var(--primary-dark);
+    color: var(--primary-light);
+    display: flex;
+    height: var(--action-bar-height);
+  }
+
+  .actionBar a {
+    height: var(--action-bar-back-height);
+  }
+
+  .actionBar svg {
+    fill: var(--primary-light);
+    height: var(--action-bar-back-height);
+    padding: 0 1em;
+    width: var(--action-bar-back-height)
+  }
+}
