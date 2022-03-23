@@ -12,6 +12,9 @@ module.exports = {
     description: `A map of all the cycle pumps in Skane.`,
     siteUrl: `https://wisechimp.github.io/cykelpumpar-i-skane/`,
   },
+  flags: {
+    DEV_SSR: true,
+  },
   plugins: [
     {
       resolve: "gatsby-plugin-google-analytics",
