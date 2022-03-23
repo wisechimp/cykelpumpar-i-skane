@@ -4,8 +4,11 @@
   justify-content: space-around;
 }
 
+/*  Not nice to use important but recommended by the Gatsby team as 
+    their image styling is added inline. Note that this vaguary
+    didn't show up in development, only the built version */
 .pumpImage{
-  display: block;
+  display: block !important;
   margin: auto;
   width: fit-content;
 }
