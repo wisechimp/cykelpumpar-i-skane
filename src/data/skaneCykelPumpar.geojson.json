@@ -1,0 +1,135 @@
+{
+	"type" : "FeatureCollection",
+	"features" : [
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 13.209625, 55.720157 ]
+			},
+			"properties" : {
+				"name" : "Magistratsvägen",
+				"address" : "Magistratsvägen, cykelparkeringen vid bussens vändhållplats",
+				"status" : true,
+				"kommun" : "lund"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 13.208214, 55.712385 ]
+			},
+			"properties" : {
+				"name" : "Kårhuset",
+				"address" : "Korsningen Sölvegatan John Ericsons väg, busshållplats Kårhuset",
+				"status" : true,
+				"kommun" : "lund"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 13.214575, 55.71556 ]
+			},
+			"properties" : {
+				"name" : "Ideon",
+				"address" : "Sölvegatan, busshållplats Ideon",
+				"status" : true,
+				"kommun" : "lund"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 13.18548, 55.705309 ]
+			},
+			"properties" : {
+				"name" : "Centralen 1",
+				"address" : "Lunds centralstation, Västra stationstorget",
+				"status" : true,
+				"kommun" : "lund"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 13.187687, 55.704603 ]
+			},
+			"properties" : {
+				"name" : "Centralen 2",
+				"address" : "Lunds centralstation, Bangatan, söder om huvudbyggnaden",
+				"status" : true,
+				"kommun" : "lund"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 13.184617, 55.708995 ]
+			},
+			"properties" : {
+				"name" : "Vävaregatan",
+				"address" : "Vävaregatan, kommunhuset Kristallen",
+				"status" : true,
+				"kommun" : "lund"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 13.193237, 55.703082 ]
+			},
+			"properties" : {
+				"name" : "Stortorget",
+				"address" : "Stortorget, mitt för Kungsgatan",
+				"status" : true,
+				"kommun" : "lund"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 13.213343, 55.698988 ]
+			},
+			"properties" : {
+				"name" : "Dalbyvägen",
+				"address" : "Dalbyvägen, busshållplats Jupitergatan",
+				"status" : true,
+				"kommun" : "lund"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 13.18858, 55.69537 ]
+			},
+			"properties" : {
+				"name" : "Malmövägen",
+				"address" : "Korsningen Malmövägen Ringvägen, söder om Mejeriet",
+				"status" : true,
+				"kommun" : "lund"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 13.197841, 55.712218 ]
+			},
+			"properties" : {
+				"name" : "Lasarettgatan",
+				"address" : "Entregatan, vid cykelparkeringen",
+				"status" : true,
+				"kommun" : "lund"
+			}
+		}
+	]
+}

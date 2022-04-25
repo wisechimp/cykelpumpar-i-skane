@@ -2457,6 +2457,11 @@
     "@webassemblyjs/ast" "1.11.1"
     "@xtuc/long" "4.2.2"
 
+"@wisechimp/wise-chimp-component-library@^0.1.1":
+  version "0.1.1"
+  resolved "https://npm.pkg.github.com/download/@wisechimp/wise-chimp-component-library/0.1.1/a54f8447b4b9324989e396035b9545b6d82d6117a9719b527e55d026d793aa15#d6deeef7b833044f66fe6f06053202aa763b96cb"
+  integrity sha512-ihKcN55rDRblQBfK4St1fZr2MQTA8HDsRKja74f3Su1JRu1ZhGilnw7BgsSP/3PUnziw6Epb2Wd41GCWzyJ3Ng==
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
@@ -5608,10 +5613,10 @@ gatsby-plugin-eslint@^4.0.2:
   dependencies:
     webpack-merge "^5.8.0"
 
-gatsby-plugin-google-analytics@^4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-4.7.0.tgz#c68f187f57748bab220da0ab9f0f78a94793f692"
-  integrity sha512-LQN+Awf7WvodYKytBZFLL40B3PPk7TPHjPa7fDzlq7J9k+/MIXQ1aYAmxhVJN3WK//GdhrltrxPZVwgomaO5NA==
+gatsby-plugin-google-analytics@^4.9.0:
+  version "4.11.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-4.11.0.tgz#73f27061713170285d007e75b4bac64b49a7d2e0"
+  integrity sha512-pa0KuZXdZ4nBGfdxK0Klg/Y+2odqHLpdbQHf2daIm7RkFsJ3dP/OhM2SZABhQXV1v+gfJvPUsiLXeCeANsyR2g==
   dependencies:
     "@babel/runtime" "^7.15.4"
     minimatch "3.0.4"
