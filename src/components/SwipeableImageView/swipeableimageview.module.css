@@ -1,21 +1,26 @@
 .swipingContainer {
   background-color: blueviolet;
+  cursor: grab;
+  margin: 1em 2em;
   overflow: hidden;
-  width: 350px;
 }
 
 .swipingView {
-  padding: 0.5em;
-  transform: "translateX(-0%)";
-  transition: transform 0.3s;
-  white-space: nowrap;
+  background-color: beige;
+  display: flex;
+  padding: 1em;
 }
 
 .swipeableItem {
-  align-items: center;
   background-color: aquamarine;
-  display: inline-flex;
-  height: 320px;
-  justify-content: center;
+  border-radius: 1em;
+  min-width: 280px;
+  padding: 1em;
+}
+
+.swipeableItem img {
+  border-radius: 1em;
+  height: 100%;
+  min-width: 280px;
   width: 100%;
 }

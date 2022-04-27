@@ -1,72 +1,36 @@
-import React, { useState, useEffect, MouseEvent, useRef } from 'react'
+import React, { useRef, useEffect, useState} from 'react'
+import { IGatsbyImageData, GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { motion } from 'framer-motion'
 
 import SwipeableImageItem from './SwipeableImageItem'
 import * as styles from './swipeableimageview.module.css'
 
 const SwipeableImageView = ({ images }) => {
-  const [activeImageNumber, setActiveImageNumber] = useState(1)
-  const [mouseDown, setMouseDown] = useState(false)
-  const [initialXCoordinate, setInitialXCoordinate] = useState(0)
-  const [finalXCoordinate, setFinalXCoordinate] = useState(0)
 
-  const swipeRef = useRef(null)
+  const[swipeableWidth, setSwipeableWidth] = useState(0)
+  const swipingContainer = useRef<HTMLDivElement>(null)
 
-  useEffect (() => {
-    if (!swipeRef.current) return 
-      swipeRef.current.onmousedown = handleMouseDown(event)
-      swipeRef.current.onmousemove = handleSwiping(event)
-  }, [])
+  useEffect(() => {
+    const currentSwipingContainer = swipingContainer.current
 
-  const handleMouseDown = (event: MouseEvent) => {
-    setMouseDown
-    setInitialXCoordinate(event.pageX)
-    console.log(initialXCoordinate)
-  }
+    console.log(swipingContainer)
 
-  const handleSwiping = (event: MouseEvent) => {
-    if (mouseDown) {
-      setFinalXCoordinate(event.pageX)
-      console.log(finalXCoordinate)
-    } else {
-      console.log("No image selected for swiping")
+    if (currentSwipingContainer && currentSwipingContainer.scrollWidth > 0) {
+      const { scrollWidth, offsetWidth } = currentSwipingContainer
+      setSwipeableWidth(scrollWidth - offsetWidth)
     }
-  }
-
-  /* const divSelectHandler = (event: MouseEvent) => {
-    console.log("Selecting!")
-    setMouseDown(true)
-    setInitialXCoordinate(event.pageX)
-    console.log(`Initial X Coordinate = ${initialXCoordinate}`)
-  }
-
-  const swipeHandler = (event: MouseEvent) => {
-    if (mouseDown) {
-      setFinalXCoordinate(event.pageX)
-      console.log(finalXCoordinate)
-      setMouseDown(false)
-    } else {
-      console.log("Mouse is not down")
-    }
-  } */
-  
-
-  const updateActiveImage = (imageNumber: number) => {
-    if (imageNumber < 0) {
-      imageNumber = 0
-    } else if (imageNumber >= images.length()) {
-      imageNumber = images.length()
-    }
-    setActiveImageNumber(imageNumber)
-  }
+  }, [swipingContainer])
 
   return(
-    <div className={styles.swipingContainer}>
-      <div ref={swipeRef} className={styles.swipingView} style={{ transform: `translateX(-${activeImageNumber * 100}%)` }}>
-        <SwipeableImageItem image={images[0]} />
-        <SwipeableImageItem image={images[1]}/>
-        <SwipeableImageItem image={images[2]}/>
-      </div>
-    </div>
+    <motion.div ref={swipingContainer} className={styles.swipingContainer} whileTap={{ cursor: "grabbing"}}>
+      <motion.div drag='x' dragConstraints={{ right: 0, left: -swipeableWidth}} className={styles.swipingView}>
+        {images.map((image: IGatsbyImageData, index:number) => {
+          return(
+            <motion.div key={index} className={styles.swipeableItem}><GatsbyImage image={image} alt="An image"/></motion.div>
+          )
+        })}
+      </motion.div>
+    </motion.div>
   )
 }
 
