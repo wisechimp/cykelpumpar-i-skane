@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState} from 'react'
 import { IGatsbyImageData, GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { motion } from 'framer-motion'
 
-import SwipeableImageItem from './SwipeableImageItem'
 import * as styles from './swipeableimageview.module.css'
 
 const SwipeableImageView = ({ images }) => {

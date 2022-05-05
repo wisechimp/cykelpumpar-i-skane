@@ -6,7 +6,7 @@ import { IGatsbyImageData, GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from 'components/Layout/Layout'
 import LinkButton from 'components/LinkButton/LinkButton'
 import * as styles from './cyclepump.module.css'
-import SwipeableImageView from 'components/SwipeableImageView/SwipeableImageView'
+import Carousel from 'components/Carousel/Carousel'
 
 interface CyclePumpPageData {
   data: {
@@ -33,18 +33,21 @@ const CyclePump = ({ data }: CyclePumpPageData) => {
   const { name, status, images } = frontmatter
   const pumpImage = getImage(data.cyclePump.localFile)
   console.log(images)
-  const image0 = getImage(images[0])
-  const image1 = getImage(images[1])
-  const image2 = getImage(images[2])
 
   return (
     <Layout pageTitle={name} bannerVisibility>
       {pumpImage 
         ? <GatsbyImage className={styles.pumpImage} image={pumpImage} alt="A map of a cycle pump perhaps?" />
         : <p>There's been a processing problem here!</p>}
-      {<SwipeableImageView images={[image0, image1, image2]} />}
-     <div>
-          <MDXRenderer>{body}</MDXRenderer>
+      <Carousel startingImage={1}>
+        {images.map((image: IGatsbyImageData, index) => {
+					return(
+						<GatsbyImage key={index} image={getImage(image)!} alt="An image"/>
+					)
+				})}
+      </Carousel>
+      <div>
+        <MDXRenderer>{body}</MDXRenderer>
       </div>
       {status ? 
         (<div className={styles.pumpActiveButtons}>

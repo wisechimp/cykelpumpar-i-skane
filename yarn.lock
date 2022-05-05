@@ -2469,11 +2469,6 @@
     "@webassemblyjs/ast" "1.11.1"
     "@xtuc/long" "4.2.2"
 
-"@wisechimp/wise-chimp-component-library@^0.1.1":
-  version "0.1.1"
-  resolved "https://npm.pkg.github.com/download/@wisechimp/wise-chimp-component-library/0.1.1/a54f8447b4b9324989e396035b9545b6d82d6117a9719b527e55d026d793aa15#d6deeef7b833044f66fe6f06053202aa763b96cb"
-  integrity sha512-ihKcN55rDRblQBfK4St1fZr2MQTA8HDsRKja74f3Su1JRu1ZhGilnw7BgsSP/3PUnziw6Epb2Wd41GCWzyJ3Ng==
-
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
@@ -5453,10 +5448,10 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-framer-motion@^6.3.2:
-  version "6.3.2"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-6.3.2.tgz#149bcd1daa4419ca5c0fbef881b4140e89b4799a"
-  integrity sha512-z+W9LyFCrQwn8Q9vTPm9RM+jYdn2WH6NM2/h1qPtsYzDsMvT50quU8RKwG4Iq2pVeojVuY1WADCuNiIln9Y6dQ==
+framer-motion@^6.3.3:
+  version "6.3.3"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-6.3.3.tgz#58978fe6955d13000351ea4c134c9bc052638967"
+  integrity sha512-wo0dCnoq5vn4L8YVOPO9W54dliH78vDaX0Lj+bSPUys6Nt5QaehrS3uaYa0q5eVeikUgtTjz070UhQ94thI5Sw==
   dependencies:
     framesync "6.0.1"
     hey-listen "^1.0.8"
